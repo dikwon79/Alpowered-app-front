@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}My App - login{% endblock %}
+
+{% block page_content %}
+
+<link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+
+  <div class="login">
+    {% include "_errors.html" %}
+    <div class="login__content">
+      <div class="login__img">
+        <img src="https://image.freepik.com/free-vector/code-typing-concept-illustration_114360-3581.jpg" alt="user login">
+      </div>
+      <div class="login__forms">
+       
+<!--         login form -->
+        <form method="post" class="login__register" id="login-in">
+          {{ form.csrf_token }}
+          <h1 class="login__title">Sign In</h1>
+          <div class="login__box">
+            <i class='bx bx-user login__icon'></i>
+            <!--<input type="text" placeholder="Username" class="login__input">-->
+            {{ form.email(class='login__input', placeholder='Email') }}
+            
+          </div>
+          <div class="login__box">
+            <i class='bx bx-lock login__icon'></i>
+            {{ form.password(class='login__input', placeholder='Password') }}
+          </div>
+          
+          <a href="/forgetpassword" class="login__forgot">Forgot Password? </a>
+          
+          <div class="login__button">
+            {{ form.submit }}
+          </div>
+          
+          <div>
+            <span class="login__account login__account--account">Don't Have an Account?</span>
+            <a href="/signup" class="login__signin login__signin--signup" id="sign-up">Sign Up</a>
+            
+          </div>
+        </form>     
+  </div>
+    
+  {% endblock %}
