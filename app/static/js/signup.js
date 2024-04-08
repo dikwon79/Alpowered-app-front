@@ -6,7 +6,7 @@ function sendDataToServer() {
         password: document.querySelector('#password').value,
         password2: document.querySelector('#password2').value
     };
-    const messageElement = document.querySelector('.message');
+    const messageElement = document.querySelector('.alert');
 
     // JSON으로 변환
     const jsonData = JSON.stringify(formData);
@@ -18,19 +18,35 @@ function sendDataToServer() {
     xhr.open("POST", "http://127.0.0.1:5000/signup/", true);
     xhr.setRequestHeader("Content-Type", "application/json");
 
-    // 요청 완료 시 실행되는 함수
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState === XMLHttpRequest.DONE) {
-            if (xhr.status === 200) {
-                // 성공 시 서버 응답 처리
-                // 가져온 요소의 내용을 변경하여 메시지를 표시합니다.
-                messageElement.innerHTML = '<button type="button" class="close" data-dismiss="alert">&times;</button>' + xhr.response;
-            } else {
-                // 실패 시 오류 처리
-                messageElement.innerHTML = '<button type="button" class="close" data-dismiss="alert">&times;</button>' + xhr.response;
+
+    // 요소를 찾은 후에만 실행되는 코드
+    if (messageElement) {
+        // 요청 완료 시 실행되는 함수
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.status === 200) {
+                    // 성공 시 서버 응답 처리
+                    // 가져온 요소의 내용을 변경하여 메시지를 표시합니다.
+                    let responseData = JSON.parse(xhr.responseText);
+                    messageElement.innerHTML = '<button type="button" class="close" data-dismiss="alert">&times;</button>' + responseData.message;
+                    
+                    console.log(responseData.success);
+                    if (responseData.success === true){
+                        window.location.href = "/login";
+                    }
+
+                } else {
+                    // 실패 시 오류 처리
+                    messageElement.innerHTML = '<button type="button" class="close" data-dismiss="alert">&times;</button>' + responseData.message;
+                }
             }
-        }
-    };
+        };
+    } else {
+        console.error("메시지 요소를 찾을 수 없습니다.");
+    }
+
+
+    
 
     // 요청 보내기
     xhr.send(jsonData);

@@ -102,7 +102,7 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                                 GET requests</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ total_statistics['get'] }}</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">total statics</div>
                                         </div>                 
                                         <div class="col-auto">
                                             <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -120,7 +120,7 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                                 POST requests</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ total_statistics['post'] }}</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">total post</div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -141,7 +141,7 @@
                                             </div>
                                             <div class="row no-gutters align-items-center">
                                                 <div class="col-auto">
-                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{ total_statistics['head'] }}</div>
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">total head</div>
                                                 </div>
                                                
                                             </div>
@@ -162,7 +162,7 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                                                 PUT requests</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ total_statistics['put'] }}</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">total put</div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-comments fa-2x text-gray-300"></i>
@@ -197,17 +197,17 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {% for user_id, stats in user_statistics.items() %}
+                                       
                                         <tr>
-                                            <td>{{ stats.username }}</td>
-                                            <td>{{ stats.email }}</td>
-                                            <td>{{ stats.total_get_requests }}</td>
-                                            <td>{{ stats.total_post_requests }}</td>
-                                            <td>{{ stats.total_head_requests }}</td>
-                                            <td>{{ stats.total_put_requests }}</td>
-                                            <td>{{ stats.total_all_requests }}</td>
+                                            <td>10</td>
+                                            <td>20</td>
+                                            <td>40</td>
+                                            <td>3</td>
+                                            <td>5</td>
+                                            <td>4</td>
+                                            <td>3</td>
                                         </tr>
-                                        {% endfor %}
+                                       
                                         <!-- 다른 사용자 데이터 추가 -->
                                     </tbody>
                                 </table>
