@@ -1,21 +1,20 @@
 function sendDataToServer() {
-    // 폼 데이터 가져오기
+    
     const formData = {
         email: document.querySelector('#email').value,
         username: document.querySelector('#username').value,
-        password: document.querySelector('#password').value,
-        password2: document.querySelector('#password2').value
+        
     };
-    const messageElement = document.querySelector('.message');
+    const messageElement = document.querySelector('.alert');
 
-    // JSON으로 변환
+  
     const jsonData = JSON.stringify(formData);
 
-    // XMLHttpRequest 객체 생성
+   
     const xhr = new XMLHttpRequest();
 
-    // HTTP POST 요청 설정
-    xhr.open("POST", "http://127.0.0.1:5000/signup/", true);
+    
+    xhr.open("POST", "http://127.0.0.1:5000/forgetpassword/", true);
     xhr.setRequestHeader("Content-Type", "application/json");
 
     // 요청 완료 시 실행되는 함수
